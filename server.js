@@ -14,30 +14,52 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  **/
-'use strict';
-const path              = require('path');
-const api               = require('node-byuapi-framework');
-const express           = require('express');
-const bodyParser        = require('body-parser');
-// ----- Set up the Express server -----
-const app = express();
+'use strict'
+const path = require('path')
+const SansServer = require('sans-server')
+const SansServerSwagger = require('sans-server-swagger')
+const expressTranslator = require('sans-server-express')
+const express = require('express')
+const bodyParser = require('body-parser')
+// const {authenticateJWTMiddleware} = require('./src/auth/authentication')
+// const {authorizeUserMiddleware} = require('./src/auth/authorization')
+// const {generateMetadataResponseObj} = require('./src/util/util')
+// const { getPool } = require('./src/db/connection')
 
-app.get('/xhealth', (req, res) => {
-  res.sendStatus(200);
-});
+// Express instance
+const app = express()
+app.use(bodyParser.json())
 
-app.use(bodyParser.json());
-app.use(api.express({
+// Health check URL
+app.get('/xhealth', function (req, res) {
+  res.send('I feel FANTASTIC and I\'m still alive.')
+})
+
+// Sans-Server instance
+const api = SansServer()
+
+// Authenticate calls to API
+//api.use(authenticateJWTMiddleware)
+//api.use(authorizeUserMiddleware)
+
+// Add swagger middleware to the sans-server instance
+api.use(SansServerSwagger({
   controllers: path.resolve(__dirname, './controllers'),
   swagger: path.resolve(__dirname, './swagger.json'),
+  development: false,
   ignoreBasePath: false,
-  validateExamples: true,
-  development: true
-}));
-let port = process.env.PORT || 8081;
-app.listen(port, function () {
-  console.log("Beginning server");
-  console.log("    [INFO] Server running on port: " + port);
-  console.log("    [INFO] Controller path = " + path.resolve(__dirname, './controllers'));
-  console.log("    [INFO] Swagger path = " + path.resolve(__dirname, './swagger.json'));
-});
+  //exception: (res, state) => res.body(generateMetadataResponseObj(state.statusCode, state.body))
+}))
+
+app.use(expressTranslator(api))
+
+/* Server Initial Setup */
+console.log('Beginning Section Types server')
+//getPool().then(() => { // Will also call getParams()
+  let port = process.env.PORT || 3000
+  app.listen(port, function () {
+    console.log('    [INFO] Server running on port: ' + port)
+    console.log('    [INFO] Controller path = ' + path.resolve(__dirname, './controllers'))
+    console.log('    [INFO] Swagger path = ' + path.resolve(__dirname, './swagger.json'))
+  })
+//})

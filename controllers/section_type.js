@@ -24,7 +24,7 @@ exports.getSectionType = function (req, res) {
 
 exports.getSectionType.mock = function (req, res) {
   console.log("Invoked getSectionType.mock")
-  res.send(req.swagger['x-mock_json'].section_types.values[0]);
+  res.send(req.swagger.root['x-mock_json'].section_types.values[0]);
 };
 
 exports.modifySectionType = function (req, res) {
@@ -34,7 +34,7 @@ exports.modifySectionType = function (req, res) {
 
 exports.modifySectionType.mock = function (req, res) {
   console.log("Invoked modifySectionType.mock")
-  res.send(req.swagger['x-mock_json'].section_types.values[0]);
+  res.send(req.swagger.root['x-mock_json'].section_types.values[0]);
 };
 
 exports.removeSectionType = function (req, res) {

@@ -24,28 +24,12 @@
         "summary": "clssched Codes",
         "description": "Retrieve a collection of section_types",
         "operationId": "getSectionTypes",
-        "parameters": [
-          {
-            "name": "section_type_query",
-            "in": "query",
-            "description": "section_type query parameter.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "$ref": "#/parameters/page_start"
-          },
-          {
-            "$ref": "#/parameters/page_size"
-          }
-        ],
         "tags": [
-          "clssched",
-          "Codes"
+          "Section Types"
         ],
         "responses": {
           "200": {
-            "description": "A collection of section_types",
+            "description": "Retrieve a collection of section_types",
             "schema": {
               "$ref": "#/definitions/section_types"
             },
@@ -71,29 +55,25 @@
             "$ref": "#/responses/default"
           }
         }
-      },
-      "post": {
+      }
+    },
+    "/{section_type}": {
+      "x-controller": "section_type",
+      "get": {
         "summary": "clssched Codes",
-        "description": "Creates a section_type",
-        "operationId": "createSectionType",
+        "description": "Retrieve a specific section_type",
+        "operationId": "getSectionType",
         "parameters": [
           {
-            "name": "section_type",
-            "in": "body",
-            "description": "New section_type values",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/section_type_new"
-            }
+            "$ref": "#/parameters/section_type"
           }
         ],
         "tags": [
-          "clssched",
-          "Codes"
+          "Section Types"
         ],
         "responses": {
-          "201": {
-            "description": "section_type successfully created",
+          "200": {
+            "description": "A specific section_type",
             "schema": {
               "$ref": "#/definitions/section_type_data"
             },
@@ -112,6 +92,12 @@
           "403": {
             "$ref": "#/responses/403"
           },
+          "404": {
+            "description": "There is no matching section_type",
+            "schema": {
+              "$ref": "#/definitions/error_response"
+            }
+          },
           "409": {
             "$ref": "#/responses/409"
           },
@@ -119,55 +105,19 @@
             "$ref": "#/responses/default"
           }
         }
-      }
-    },
-    "/{section_type}": {
-      "x-controller": "section_type",
-      "parameters": [
-        { "$ref": "#/parameters/section_type" }
-      ],
-      "get": {
-        "summary": "clssched Codes",
-        "description": "Retrieve a specific section_type",
-        "operationId": "getSectionType",
-        "tags": [
-          "clssched",
-          "Codes"
-        ],
-        "responses": {
-          "200": {
-            "description": "A specific section_type",
-            "schema": {
-              "$ref": "#/definitions/section_type_data"
-            },
-            "examples": {
-              "application/json": {
-                "$ref": "#/x-mock_json/section_types/values/0"
-              }
-            }
-          },
-          "400": { "$ref": "#/responses/400" },
-          "401": { "$ref": "#/responses/401" },
-          "403": { "$ref": "#/responses/403" },
-          "404": {
-            "description": "There is no matching section_type",
-            "schema": {
-              "$ref": "#/definitions/error_response"
-            }
-          },
-          "409": { "$ref": "#/responses/409" },
-          "default": { "$ref": "#/responses/default" }
-        }
       },
       "put": {
         "summary": "clssched Codes",
-        "description": "Modify a section_type",
+        "description": "Create or modify a section_type",
         "operationId": "modifySectionType",
         "parameters": [
           {
-            "name": "section_type_modify",
+            "$ref": "#/parameters/section_type"
+          },
+          {
+            "name": "section_type_new",
             "in": "body",
-            "description": "Values required to modify a section_type",
+            "description": "Values required to create or modify a section_type",
             "required": true,
             "schema": {
               "$ref": "#/definitions/section_type_new"
@@ -175,8 +125,7 @@
           }
         ],
         "tags": [
-          "clssched",
-          "Codes"
+          "Section Types"
         ],
         "responses": {
           "200": {
@@ -190,92 +139,86 @@
               }
             }
           },
-          "400": { "$ref": "#/responses/400" },
-          "401": { "$ref": "#/responses/401" },
-          "403": { "$ref": "#/responses/403" },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
           "404": {
             "description": "There is no matching section_type",
             "schema": {
               "$ref": "#/definitions/error_response"
             }
           },
-          "409": { "$ref": "#/responses/409" },
-          "default": { "$ref": "#/responses/default" }
+          "409": {
+            "$ref": "#/responses/409"
+          },
+          "default": {
+            "$ref": "#/responses/default"
+          }
         }
       },
       "delete": {
         "summary": "clssched Codes",
         "description": "Removes a section_type",
         "operationId": "removeSectionType",
+        "parameters": [
+          {
+            "$ref": "#/parameters/section_type"
+          }
+        ],
         "tags": [
-          "clssched",
-          "Codes"
+          "Section Types"
         ],
         "responses": {
           "204": {
             "description": "section_type successfully Removed"
           },
-          "400": { "$ref": "#/responses/400" },
-          "401": { "$ref": "#/responses/401" },
-          "403": { "$ref": "#/responses/403" },
-          "default": { "$ref": "#/responses/default" }
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "default": {
+            "$ref": "#/responses/default"
+          }
         }
       }
     },
-    "/{section_type}/logs": {
-      "x-controller": "section_type_logs",
-      "parameters": [
-        { "$ref": "#/parameters/section_type" }
-      ],
-      "get": {
-        "summary": "clssched Codes Archive",
-        "description": "Retrieve the collection of logs for a section_type",
-        "operationId": "getSectionTypeLogs",
-        "tags": [
-          "clssched",
-          "Codes"
-        ],
-        "responses": {
-          "200": {
-            "description": "A collection of section_type Logs",
-            "schema": {
-              "$ref": "#/definitions/section_type_logs"
-            },
-            "examples": {
-              "application/json": {
-                "$ref": "#/x-mock_json/section_type_logs"
-              }
-            }
-          },
-          "400": { "$ref": "#/responses/400" },
-          "401": { "$ref": "#/responses/401" },
-          "403": { "$ref": "#/responses/403" },
-          "404": {
-            "description": "There is no matching section_type",
-            "schema": {
-              "$ref": "#/definitions/error_response"
-            }
-          },
-          "409": { "$ref": "#/responses/409" },
-          "default": { "$ref": "#/responses/default" }
-        }
-      }
-    }
+    "/section_number"
   },
   "definitions": {
     "section_types": {
-      "description": "The section_type collection",
+      "description": "A collection of section types",
       "type": "object",
       "required": [
+        "links",
+        "metadata",
         "values"
       ],
       "properties": {
         "links": {
-          "description": "Hypermedia Links that impact the section_type collection",
+          "description": "Hypermedia Links that impact the section type collection",
           "type": "object",
+          "required": [
+            "section_types__info"
+          ],
           "properties": {
             "section_types__info": {
               "type": "object",
+              "required": [
+                "rel",
+                "href",
+                "method"
+              ],
               "properties": {
                 "rel": {
                   "type": "string",
@@ -287,55 +230,7 @@
                 "href": {
                   "type": "string",
                   "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1?page_start=51&page_size=50"
-                },
-                "method": {
-                  "type": "string",
-                  "enum": [
-                    "GET"
-                  ],
-                  "default": "GET"
-                }
-              }
-            },
-            "section_types__prev": {
-              "type": "object",
-              "properties": {
-                "rel": {
-                  "type": "string",
-                  "enum": [
-                    "section_types__prev"
-                  ],
-                  "default": "section_types__prev"
-                },
-                "href": {
-                  "type": "string",
-                  "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1?page_start=:page_start&page_size=:page_size"
-                },
-                "method": {
-                  "type": "string",
-                  "enum": [
-                    "GET"
-                  ],
-                  "default": "GET"
-                }
-              }
-            },
-            "section_types__next": {
-              "type": "object",
-              "properties": {
-                "rel": {
-                  "type": "string",
-                  "enum": [
-                    "section_types__next"
-                  ],
-                  "default": "section_types__next"
-                },
-                "href": {
-                  "type": "string",
-                  "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1?page_start=:page_start1&page_size=:page_size"
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1"
                 },
                 "method": {
                   "type": "string",
@@ -348,6 +243,11 @@
             },
             "section_types__create": {
               "type": "object",
+              "required": [
+                "rel",
+                "href",
+                "method"
+              ],
               "properties": {
                 "rel": {
                   "type": "string",
@@ -359,21 +259,22 @@
                 "href": {
                   "type": "string",
                   "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1"
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/{section_type}",
+                  "x-template": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type"
                 },
                 "method": {
                   "type": "string",
                   "enum": [
-                    "POST"
+                    "PUT"
                   ],
-                  "default": "POST"
+                  "default": "PUT"
                 }
               }
             }
           }
         },
         "metadata": {
-          "$ref": "#/definitions/sub_level_metadata"
+          "$ref": "#/definitions/collection_metadata"
         },
         "values": {
           "type": "array",
@@ -387,14 +288,17 @@
       }
     },
     "section_type_data": {
-      "description": "A section_type",
+      "description": "A section type",
       "type": "object",
       "properties": {
         "links": {
-          "description": "Hypermedia Links that impact this section_type",
+          "description": "Hypermedia Links that impact this section type",
           "type": "object",
+          "required": [
+            "section_types__info"
+          ],
           "properties": {
-            "section_types__info": {
+            "section_type__info": {
               "description": "Hypermedia link to retrieve this section_type",
               "type": "object",
               "required": [
@@ -413,7 +317,8 @@
                 "href": {
                   "type": "string",
                   "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type"
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/{section_type}",
+                  "x-template": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type"
                 },
                 "method": {
                   "type": "string",
@@ -424,7 +329,7 @@
                 }
               }
             },
-            "section_types__modify": {
+            "section_type__modify": {
               "description": "Hypermedia link to modify this section_type",
               "type": "object",
               "required": [
@@ -436,14 +341,15 @@
                 "rel": {
                   "type": "string",
                   "enum": [
-                    "section_types__modify"
+                    "section_type__modify"
                   ],
-                  "default": "section_types__modify"
+                  "default": "section_type__modify"
                 },
                 "href": {
                   "type": "string",
                   "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type"
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/{section_type}",
+                  "x-template": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type"
                 },
                 "method": {
                   "type": "string",
@@ -454,7 +360,7 @@
                 }
               }
             },
-            "section_types__remove": {
+            "section_type__remove": {
               "description": "Hypermedia link to remove this section_type",
               "type": "object",
               "required": [
@@ -466,14 +372,15 @@
                 "rel": {
                   "type": "string",
                   "enum": [
-                    "section_types__remove"
+                    "section_type__remove"
                   ],
-                  "default": "section_types__remove"
+                  "default": "section_type__remove"
                 },
                 "href": {
                   "type": "string",
                   "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type"
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/{section_type}",
+                  "x-template": "https://api/byu.edu/domains/clssched/section_types/v1/:section_type"
                 },
                 "method": {
                   "type": "string",
@@ -495,9 +402,6 @@
         "description": {
           "$ref": "#/definitions/description"
         },
-        "long_description": {
-          "$ref": "#/definitions/long_description"
-        },
         "active_status": {
           "$ref": "#/definitions/active_status"
         },
@@ -506,15 +410,51 @@
         },
         "date_time_updated": {
           "$ref": "#/definitions/date_time_updated"
+        },
+        "section_numbers": {
+          "$ref": "#/definitions/section_numbers"
         }
       },
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0"
       }
     },
+    "section_numbers": {
+      "description": "A collection of section numbers",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/section_number"
+      },
+      "example": {
+        "$ref": "#/x-mock_json/section_types/values/0/section_numbers"
+      }
+    },
+    "section_number": {
+      "description": "A section number",
+      "type": "object",
+      "properties": {
+        "section_number": {
+          "type": "string"
+        },
+        "abbrev": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "$ref": "#/x-mock_json/section_types/values/0/section_numbers/0"
+      }
+    },
     "section_type_new": {
       "description": "Elements required to add a new section_type",
       "type": "object",
+      "required": [
+        "section_type",
+        "description",
+        "active_status"
+      ],
       "properties": {
         "section_type": {
           "$ref": "#/definitions/section_type"
@@ -522,149 +462,19 @@
         "description": {
           "$ref": "#/definitions/description"
         },
-        "long_description": {
-          "$ref": "#/definitions/long_description"
-        },
         "active_status": {
           "$ref": "#/definitions/active_status"
         }
-     },
+      },
       "example": {
         "$ref": "#/x-mock_json/section_type_new"
       }
     },
-    "section_type_logs": {
-      "description": "Change Logs for section_type API",
-      "type": "object",
-      "properties": {
-        "links": {
-          "description": "Hypermedia Links that impact the log collection for section_type",
-          "type": "object",
-          "properties": {
-            "section_type_logs__info": {
-              "type": "object",
-              "properties": {
-                "rel": {
-                  "type": "string",
-                  "enum": [
-                    "self"
-                  ],
-                  "default": "self"
-                },
-                "href": {
-                  "type": "string",
-                  "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type/logs?page_start=:page_start&page_size=:page_size"
-                },
-                "method": {
-                  "type": "string",
-                  "enum": [
-                    "GET"
-                  ],
-                  "default": "GET"
-                }
-              }
-            },
-            "section_type_logs__prev": {
-              "type": "object",
-              "properties": {
-                "rel": {
-                  "type": "string",
-                  "enum": [
-                    "section_type_logs__prev"
-                  ],
-                  "default": "section_type_logs__prev"
-                },
-                "href": {
-                  "type": "string",
-                  "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type/logs?page_start=:page_start&page_size=:page_size"
-                },
-                "method": {
-                  "type": "string",
-                  "enum": [
-                    "GET"
-                  ],
-                  "default": "GET"
-                }
-              }
-            },
-            "section_type_logs__next": {
-              "type": "object",
-              "properties": {
-                "rel": {
-                  "type": "string",
-                  "enum": [
-                    "section_type_logs__next"
-                  ],
-                  "default": "section_type_logs__next"
-                },
-                "href": {
-                  "type": "string",
-                  "format": "uri",
-                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type/logs?page_start=:page_start1&page_size=:page_size"
-                },
-                "method": {
-                  "type": "string",
-                  "enum": [
-                    "GET"
-                  ],
-                  "default": "GET"
-                }
-              }
-            }
-          }
-        },
-        "metadata": {
-          "$ref": "#/definitions/sub_level_metadata"
-        },
-        "values": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/section_type_log"
-          }
-        }
-      },
-      "example": {
-        "$ref": "#/x-mock_json/section_type_logs"
-      }
-    },
-    "section_type_log": {
-      "description": "Change Log for section_type API",
-      "type": "object",
-      "properties": {
-        "log_id": {
-          "$ref": "#/definitions/log_id"
-        },
-        "log_action": {
-          "$ref": "#/definitions/log_action"
-        },
-        "section_type": {
-          "$ref": "#/definitions/section_type"
-        },
-        "description": {
-          "$ref": "#/definitions/description"
-        },
-        "long_description": {
-          "$ref": "#/definitions/long_description"
-        },
-        "active_status": {
-          "$ref": "#/definitions/active_status"
-        },
-        "updated_by_id": {
-          "$ref": "#/definitions/updated_by_id"
-        },
-        "date_time_updated": {
-          "$ref": "#/definitions/date_time_updated"
-        }
-      },
-      "example": {
-        "$ref": "#/x-mock_json/section_type_logs/values/0"
-      }
-    },
     "error_response": {
       "type": "object",
-      "required": ["metadata"],
+      "required": [
+        "metadata"
+      ],
       "properties": {
         "metadata": {
           "$ref": "#/definitions/simple_metadata"
@@ -673,7 +483,9 @@
     },
     "simple_metadata": {
       "type": "object",
-      "required": ["validation_response"],
+      "required": [
+        "validation_response"
+      ],
       "properties": {
         "validation_response": {
           "type": "object",
@@ -706,42 +518,34 @@
             }
           }
         }
+      },
+      "example": {
+        "$ref": "#/x-mock_json/section_types/values/0/metadata"
       }
     },
-    "sub_level_metadata": {
+    "collection_metadata": {
       "allOf": [
         {
+          "$ref": "#/definitions/simple_metadata"
+        },
+        {
           "type": "object",
+          "required": [
+            "collection_size"
+          ],
           "properties": {
             "collection_size": {
               "type": "integer",
-              "minimum": 0
-            },
-            "page_start": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "page_end": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "page_size": {
-              "type": "integer",
-              "minimum": 1
-            },
-            "default_page_size": {
-              "type": "integer",
-              "minimum": 1
-            },
-            "max_page_size": {
-              "type": "integer"
+              "minimum": 0,
+              "default": 0,
+              "x-variable": "collection_size"
             }
           }
-        },
-        {
-          "$ref": "#/definitions/simple_metadata"
         }
-      ]
+      ],
+      "example": {
+        "$ref": "#/x-mock_json/section_types/metadata"
+      }
     },
     "section_type": {
       "description": "section_type",
@@ -769,28 +573,6 @@
       "type": "string",
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0/description"
-      }
-    },
-    "log_action": {
-      "description": "What function was performed on the section_type",
-      "type": "string",
-      "enum": [
-        "section_types__create",
-        "section_types__modify",
-        "section_types__remove"
-      ],
-      "example": { "$ref": "#/x-mock_json/section_type_logs/values/0/log_action" }
-    },
-    "log_id": {
-      "description": "Unique identifier assigned to each log record",
-      "type": "string",
-      "example": { "$ref": "#/x-mock_json/section_type_logs/values/0/log_id" }
-    },
-    "long_description": {
-      "description": "section_type Long Description",
-      "type": "string",
-      "example": {
-        "$ref": "#/x-mock_json/section_types/values/0/long_description"
       }
     },
     "updated_by_id": {
@@ -861,35 +643,17 @@
       "links": {
         "section_types__info": {
           "rel": "self",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1?page_start=51&page_size=50",
-          "method": "GET"
-        },
-        "section_types__prev": {
-          "rel": "section_types__prev",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1?page_start=1&page_size=50",
-          "method": "GET"
-        },
-        "section_types__next": {
-          "rel": "section_types__next",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1?page_start=101&page_size=50",
+          "href": "https://api.byu.edu/domains/clssched/section_types/v1",
           "method": "GET"
         },
         "section_types__create": {
           "rel": "section_types__create",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1",
-          "method": "POST"
+          "href": "https://api.byu.edu/domains/clssched/section_types/v1/{section_type}",
+          "method": "PUT"
         }
       },
       "metadata": {
         "collection_size": 1,
-        "page_start": 1,
-        "page_end": 1,
-        "page_size": 1,
-        "default_page_size": 50,
-        "max_page_size": 1000,
-        "cache": {
-          "date_time": "2014-05-11T13:45:53.200Z"
-        },
         "validation_response": {
           "code": 200,
           "message": "Retrieve Successful"
@@ -898,91 +662,57 @@
       "values": [
         {
           "links": {
-            "section_types__info": {
+            "section_type__info": {
               "rel": "self",
               "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO",
               "method": "GET"
             },
-            "section_types__modify": {
-              "rel": "section_types__modify",
+            "section_type__modify": {
+              "rel": "section_type__modify",
               "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO",
               "method": "PUT"
             },
-            "section_types__remove": {
-              "rel": "section_types__remove",
+            "section_type__remove": {
+              "rel": "section_type__remove",
               "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO",
               "method": "DELETE"
             }
           },
           "metadata": {
-            "cache": {
-              "date_time": "2014-05-11T13:45:53.200Z"
-            },
             "validation_response": {
               "code": 200,
               "message": "Successful"
             }
           },
           "section_type": "IDAHO",
-          "description": "IDAHO",
-          "long_description": "IDAHO",
-          "active_status": "Y",
-          "updated_by_id": "111111111",
-          "date_time_updated": "2014-05-11T13:45:53.200Z"
-        }
-      ]
-    },
-    "section_type_logs": {
-      "links": {
-        "section_type_logs__info": {
-          "rel": "self",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO/logs?page_start=51&page_size=50",
-          "method": "GET"
-        },
-        "section_type_logs__prev": {
-          "rel": "section_type_logs__prev",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO/logs?page_start=1&page_size=50",
-          "method": "GET"
-        },
-        "section_type_logs__next": {
-          "rel": "section_type_logs__next",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO/logs?page_start=101&page_size=50",
-          "method": "GET"
-        }
-      },
-      "metadata": {
-        "collection_size": 1,
-        "page_start": 1,
-        "page_end": 1,
-        "page_size": 1,
-        "default_page_size": 50,
-        "max_page_size": 1000,
-        "cache": {
-          "date_time": "2014-05-11T13:45:53.200Z"
-        },
-        "validation_response": {
-          "code": 200,
-          "message": "Successful"
-        }
-      },
-      "values": [
-        {
-          "log_id": "4128395402",
-          "log_action": "section_types__create",
-          "section_type": "IDAHO",
-          "description": "IDAHO",
-          "long_description": "IDAHO",
-          "active_status": "Y",
-          "updated_by_id": "111111111",
-          "date_time_updated": "2014-05-11T13:45:53.200Z"
+          "description": "Idaho Center",
+          "active_status": "A",
+          "updated_by_id": "INIT",
+          "date_time_updated": "01-NOV-05",
+          "section_numbers": [
+            {
+              "section_number": "800",
+              "abbrev": "ID",
+              "description": "Idaho Center"
+            },
+            {
+              "section_number": "801",
+              "abbrev": "ID",
+              "description": "Idaho Center"
+            }
+          ]
         }
       ]
     },
     "section_type_new": {
       "section_type": "IDAHO",
-      "description": "IDAHO",
-      "long_description": "IDAHO",
-      "active_status": "Y"
+      "description": "Idaho Center",
+      "active_status": "A"
+    },
+    "section_number_new": {
+      "section_number": "800",
+      "abbrev": "ID",
+      "description": "Idaho Center"
     }
   }
 }

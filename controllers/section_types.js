@@ -24,15 +24,5 @@ exports.getSectionTypes = function (req, res) {
 
 exports.getSectionTypes.mock = function (req, res) {
   console.log("Invoked getSectionTypes.mock")
-  res.send(req.swagger['x-mock_json'].section_types);
-};
-
-exports.createSectionType = function (req, res) {
-  console.log("Invoked createSectionType")
-  exports.createSectionType.mock(req, res);
-};
-
-exports.createSectionType.mock = function (req, res) {
-  console.log("Invoked createSectionType.mock")
-  res.status(201).send(req.swagger['x-mock_json'].section_types.values[0]);
+  res.send(req.swagger.root['x-mock_json'].section_types);
 };
