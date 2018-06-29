@@ -193,7 +193,76 @@
         }
       }
     },
-    "/section_number"
+    "/{section_type}/section_numbers": {
+      "x-controller": "section_numbers",
+      "get": {
+        "summary": "clssched Codes",
+        "description": "Retrieve a collection of section_numbers",
+        "operationId": "getSectionNumbers",
+        "parameters": [
+          {
+           "name": "description",
+            "in": "query",
+            "description": "Query by description",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "abbrev",
+            "in": "query",
+            "description": "Query by abbrev",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/section_type"
+          },
+          {
+            "$ref": "#/parameters/page_start"
+          },
+          {
+            "$ref": "#/parameters/page_size"
+          }
+        ],
+        "tags": [
+          "Section Numbers"
+        ],
+        "responses": {
+          "200": {
+            "description": "A collection of section numbers",
+            "schema": {
+              "$ref": "#/definitions/section_numbers"
+            },
+            "examples": {
+              "application/json": {
+                "$ref": "#/x-mock_json/section_types/values/0/section_numbers"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "description": "There is no matching section_number",
+            "schema": {
+              "$ref": "#/definitions/error_response"
+            }
+          },
+          "409": {
+            "$ref": "#/responses/409"
+          },
+          "default": {
+            "$ref": "#/responses/default"
+          }
+        }
+      }
+    }
   },
   "definitions": {
     "section_types": {
@@ -412,14 +481,14 @@
           "$ref": "#/definitions/date_time_updated"
         },
         "section_numbers": {
-          "$ref": "#/definitions/section_numbers"
+          "$ref": "#/definitions/section_numbers_array"
         }
       },
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0"
       }
     },
-    "section_numbers": {
+    "section_numbers_array": {
       "description": "A collection of section numbers",
       "type": "array",
       "items": {
@@ -432,7 +501,77 @@
     "section_number": {
       "description": "A section number",
       "type": "object",
+      "required": [
+        "section_number",
+        "abbrev",
+        "description"
+      ],
       "properties": {
+        "links": {
+          "description": "Hypermedia Links that impact this section number",
+          "type": "object",
+          "required": [
+            "section_numbers__info"
+          ],
+          "properties": {
+            "section_number__info": {
+              "type": "object",
+              "required": [
+                "rel",
+                "href",
+                "method"
+              ],
+              "properties": {
+                "rel": {
+                  "type": "string",
+                  "enum": [
+                    "self"
+                  ],
+                  "default": "self"
+                },
+                "href": {
+                  "type": "string",
+                  "format": "uri",
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/section_numbers/:section_number"
+                },
+                "method": {
+                  "type": "string",
+                  "enum": [
+                    "GET"
+                  ],
+                  "default": "GET"
+                }
+              }
+            },
+            "section_number__modify": {
+              "type": "object",
+              "properties": {
+                "rel": {
+                  "type": "string",
+                  "enum": [
+                    "section_number__modify"
+                  ],
+                  "default": "section_number__modify"
+                },
+                "href": {
+                  "type": "string",
+                  "format": "uri",
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type/section_numbers/:section_number"
+                },
+                "method": {
+                  "type": "string",
+                  "enum": [
+                    "PUT"
+                  ],
+                  "default": "PUT"
+                }
+              }
+            }
+          }
+        },
+        "metadata": {
+          "$ref": "#/definitions/simple_metadata"
+        },
         "section_number": {
           "type": "string"
         },
@@ -447,6 +586,135 @@
         "$ref": "#/x-mock_json/section_types/values/0/section_numbers/0"
       }
     },
+    "section_numbers": {
+      "description": "A collection of section_numbers",
+      "type": "object",
+      "required": [
+        "links",
+        "metadata",
+        "values"
+      ],
+      "properties": {
+        "links": {
+          "description": "Hypermedia links that impact the section_numbers collection",
+          "properties": {
+            "section_numbers__next": {
+              "type": "object",
+              "properties": {
+                "rel": {
+                  "type": "string",
+                  "enum": [
+                    "section_numbers__next"
+                  ],
+                  "default": "section_numbers__next"
+                },
+                "href":{
+                  "type": "string",
+                  "format": "uri",
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/section_numbers?page_start=:page_start&page_size=:page_size"
+                },
+                "method": {
+                  "type": "string",
+                  "enum": [
+                    "GET"
+                  ],
+                  "default": "GET"
+                }
+              }
+            },
+            "section_numbers__prev": {
+              "type": "object",
+              "properties": {
+                "rel": {
+                  "type": "string",
+                  "enum": [
+                    "section_numbers__prev"
+                  ],
+                  "default": "section_numbers__prev"
+                },
+                "href": {
+                  "type": "string",
+                  "format": "uri",
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/section_numbers?page_start=:page_start&page_size=:page_size"
+                },
+                "method": {
+                  "type": "string",
+                  "enum": [
+                    "GET"
+                  ],
+                  "default": "GET"
+                }
+              }
+            },
+            "section_numbers__create": {
+              "type": "object",
+              "required": [
+                "rel",
+                "href",
+                "method"
+              ],
+              "properties": {
+                "rel": {
+                  "type": "string",
+                  "enum": [
+                    "section_types__create"
+                  ],
+                  "default": "section_types__create"
+                },
+                "href": {
+                  "type": "string",
+                  "format": "uri",
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/{section_type}",
+                  "x-template": "https://api.byu.edu/domains/clssched/section_types/v1/:section_type"
+                },
+                "method": {
+                  "type": "string",
+                  "enum": [
+                    "PUT"
+                  ],
+                  "default": "PUT"
+                }
+              }
+            },
+            "section_numbers__info": {
+              "type": "object",
+              "required": [
+                "rel",
+                "href",
+                "method"
+              ],
+              "properties": {
+                "rel": {
+                  "type": "string",
+                  "enum": [
+                    "self"
+                  ],
+                  "default": "self"
+                },
+                "href": {
+                  "type": "string",
+                  "format": "uri",
+                  "default": "https://api.byu.edu/domains/clssched/section_types/v1/section_numbers"
+                },
+                "method": {
+                  "type": "string",
+                  "enum": [
+                    "GET"
+                  ],
+                  "default": "GET"
+                }
+              }
+            }
+          }
+          },
+        "metadata": {
+          "$ref": "#/definitions/collection_metadata"
+        },
+        "values": {
+          "$ref": "#/definitions/section_numbers_array"
+        }
+        }
+      },
     "section_type_new": {
       "description": "Elements required to add a new section_type",
       "type": "object",
@@ -596,14 +864,17 @@
       "in": "query",
       "description": "Skip into a large collection to this item",
       "required": false,
-      "type": "string"
+      "type": "integer",
+      "default": 1
     },
     "page_size": {
       "name": "page_size",
       "in": "query",
       "description": "Return this many items of a large collection",
       "required": false,
-      "type": "string"
+      "type": "integer",
+      "default": 50,
+      "max": 100
     }
   },
   "responses": {
@@ -701,6 +972,57 @@
               "description": "Idaho Center"
             }
           ]
+        }
+      ]
+    },
+    "section_numbers": {
+      "links": {
+        "section_numbers__info": {
+          "rel": "self",
+          "href": "https://api.byu.edu/domains/clssched/section_types/v1/section_numbers?page_start=1&page_size=1",
+          "method": "GET"
+        },
+        "section_numbers__create": {
+          "rel": "section_types__create",
+          "href": "https://api.byu.edu/domains/clssched/section_types/v1/{section_type}",
+          "method": "PUT"
+        },
+        "section_numbers__next": {
+          "rel": "section_numbers__next",
+          "href": "https://api.byu.edu/domains/clssched/section_types/v1/section_numbers?page_start=2&page_size=1",
+          "method": "GET"
+        }
+      },
+      "metadata": {
+        "collection_size": 1000,
+        "validation_response": {
+          "code": 200,
+          "message": "Retrieve Successful"
+        }
+      },
+      "values": [
+        {
+          "links": {
+            "section_number__info": {
+              "rel": "self",
+              "href": "https://api.byu.edu/domains/clssched/section_types/v1/section_number/800",
+              "method": "GET"
+            },
+            "section_number__modify": {
+              "rel": "section_number__modify",
+              "href": "https://api.byu.edu/domains/clssched/section_types/v1/section_number/800",
+              "method": "PUT"
+            }
+          },
+          "metadata": {
+            "validation_response": {
+              "code": 200,
+              "message": "Successful"
+            }
+          },
+          "section_number": "800",
+          "abbrev": "ID",
+          "description": "Idaho Center"
         }
       ]
     },

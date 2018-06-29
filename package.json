@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/byu-oit/domain-clssched-section-types.git"
   },
   "author": "Lyndsey Richmond <lyndseymrichmond@byu.edu>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/byu-oit/domain-transfers-transfer-colleges/issues"
+    "url": "https://github.com/byu-oit/domain-clssched-section-types/issues"
   },
-  "homepage": "https://github.com/byu-oit/domain-transfers-transfer-colleges#readme",
+  "homepage": "https://github.com/byu-oit/domain-clssched-section-types#readme",
   "dependencies": {
     "aws-sdk": "^2.265.1",
     "bluebird": "^3.5.1",
