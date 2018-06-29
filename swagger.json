@@ -713,7 +713,10 @@
         "values": {
           "$ref": "#/definitions/section_numbers_array"
         }
-        }
+        },
+      "example": {
+        "$ref": "#/x-mock_json/section_numbers"
+      }
       },
     "section_type_new": {
       "description": "Elements required to add a new section_type",
