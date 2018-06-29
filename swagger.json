@@ -657,9 +657,9 @@
                 "rel": {
                   "type": "string",
                   "enum": [
-                    "section_types__create"
+                    "section_numbers__create"
                   ],
-                  "default": "section_types__create"
+                  "default": "section_numbers__create"
                 },
                 "href": {
                   "type": "string",
@@ -866,15 +866,17 @@
       "name": "page_start",
       "in": "query",
       "description": "Skip into a large collection to this item",
-      "required": false,
-      "type": "integer"
+      "required": true,
+      "type": "integer",
+      "default": 1
     },
     "page_size": {
       "name": "page_size",
       "in": "query",
       "description": "Return this many items of a large collection",
-      "required": false,
-      "type": "integer"
+      "required": true,
+      "type": "integer",
+      "default": 50
     }
   },
   "responses": {
@@ -979,17 +981,17 @@
       "links": {
         "section_numbers__info": {
           "rel": "self",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1/section_numbers?page_start=1&page_size=1",
+          "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO/section_numbers?page_start=1&page_size=1",
           "method": "GET"
         },
         "section_numbers__create": {
-          "rel": "section_types__create",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1/{section_type}",
+          "rel": "section_numbers__create",
+          "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO/section_numbers/{section_number}",
           "method": "PUT"
         },
         "section_numbers__next": {
           "rel": "section_numbers__next",
-          "href": "https://api.byu.edu/domains/clssched/section_types/v1/section_numbers?page_start=2&page_size=1",
+          "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO/section_numbers?page_start=2&page_size=1",
           "method": "GET"
         }
       },
@@ -1005,12 +1007,12 @@
           "links": {
             "section_number__info": {
               "rel": "self",
-              "href": "https://api.byu.edu/domains/clssched/section_types/v1/section_number/800",
+              "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO/section_number/800",
               "method": "GET"
             },
             "section_number__modify": {
               "rel": "section_number__modify",
-              "href": "https://api.byu.edu/domains/clssched/section_types/v1/section_number/800",
+              "href": "https://api.byu.edu/domains/clssched/section_types/v1/IDAHO/section_number/800",
               "method": "PUT"
             }
           },
