@@ -235,7 +235,7 @@
             },
             "examples": {
               "application/json": {
-                "$ref": "#/x-mock_json/section_types/values/0/section_numbers"
+                "$ref": "#/x-mock_json/section_numbers"
               }
             }
           },
@@ -864,17 +864,14 @@
       "in": "query",
       "description": "Skip into a large collection to this item",
       "required": false,
-      "type": "integer",
-      "default": 1
+      "type": "integer"
     },
     "page_size": {
       "name": "page_size",
       "in": "query",
       "description": "Return this many items of a large collection",
       "required": false,
-      "type": "integer",
-      "default": 50,
-      "max": 100
+      "type": "integer"
     }
   },
   "responses": {
