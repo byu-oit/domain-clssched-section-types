@@ -21,7 +21,7 @@ const SansServerSwagger = require('sans-server-swagger')
 const expressTranslator = require('sans-server-express')
 const express = require('express')
 const bodyParser = require('body-parser')
-// const {authenticateJWTMiddleware} = require('./src/auth/authentication')
+const {authenticateJWTMiddleware} = require('./src/auth/authentication')
 // const {authorizeUserMiddleware} = require('./src/auth/authorization')
 // const {generateMetadataResponseObj} = require('./src/util/util')
 // const { getPool } = require('./src/db/connection')
@@ -46,7 +46,7 @@ app.get('/xhealth', function (req, res) {
 const api = SansServer()
 
 // Authenticate calls to API
-//api.use(authenticateJWTMiddleware)
+api.use(authenticateJWTMiddleware)
 //api.use(authorizeUserMiddleware)
 
 // Add swagger middleware to the sans-server instance
