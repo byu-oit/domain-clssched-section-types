@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "clsschedSectionType",
-    "description": "Section Type Data",
+    "description": "Section Types Data",
     "version": "v1",
     "license": {
       "name": "Apache 2.0",
@@ -13,7 +13,7 @@
   "schemes": [
     "https"
   ],
-  "basePath": "/domains/clssched/section_types",
+  "basePath": "/domain/clssched/section_types",
   "produces": [
     "application/json"
   ],
@@ -36,6 +36,53 @@
             "examples": {
               "application/json": {
                 "$ref": "#/x-mock_json/section_types"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "409": {
+            "$ref": "#/responses/409"
+          },
+          "default": {
+            "$ref": "#/responses/default"
+          }
+        }
+      },
+      "post" : {
+        "summary": "clssched Codes",
+        "description": "Creates a new section type",
+        "operationId": "createSectionType",
+        "parameters": [
+          {
+            "name": "section_type_data",
+            "in": "body",
+            "description": "New section type values",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/section_type_new"
+            }
+          }
+        ],
+        "tags": [
+          "Section Types"
+        ],
+        "responses": {
+          "201": {
+            "description": "Section Type successfully created",
+            "schema": {
+              "$ref": "#/definitions/section_type_data"
+            },
+            "examples": {
+              "application/json": {
+                "$ref": "#/x-mock_json/section_types/values/0"
               }
             }
           },
@@ -108,7 +155,7 @@
       },
       "put": {
         "summary": "clssched Codes",
-        "description": "Create or modify a section_type",
+        "description": "Modify a section_type",
         "operationId": "modifySectionType",
         "parameters": [
           {
@@ -186,76 +233,6 @@
           },
           "403": {
             "$ref": "#/responses/403"
-          },
-          "default": {
-            "$ref": "#/responses/default"
-          }
-        }
-      }
-    },
-    "/{section_type}/section_numbers": {
-      "x-controller": "section_numbers",
-      "get": {
-        "summary": "clssched Codes",
-        "description": "Retrieve a collection of section_numbers",
-        "operationId": "getSectionNumbers",
-        "parameters": [
-          {
-           "name": "description",
-            "in": "query",
-            "description": "Query by description",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "abbrev",
-            "in": "query",
-            "description": "Query by abbrev",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "$ref": "#/parameters/section_type"
-          },
-          {
-            "$ref": "#/parameters/page_start"
-          },
-          {
-            "$ref": "#/parameters/page_size"
-          }
-        ],
-        "tags": [
-          "Section Numbers"
-        ],
-        "responses": {
-          "200": {
-            "description": "A collection of section numbers",
-            "schema": {
-              "$ref": "#/definitions/section_numbers"
-            },
-            "examples": {
-              "application/json": {
-                "$ref": "#/x-mock_json/section_numbers"
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/responses/400"
-          },
-          "401": {
-            "$ref": "#/responses/401"
-          },
-          "403": {
-            "$ref": "#/responses/403"
-          },
-          "404": {
-            "description": "There is no matching section_number",
-            "schema": {
-              "$ref": "#/definitions/error_response"
-            }
-          },
-          "409": {
-            "$ref": "#/responses/409"
           },
           "default": {
             "$ref": "#/responses/default"
