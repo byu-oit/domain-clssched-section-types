@@ -51,7 +51,7 @@ api.use(authenticateJWTMiddleware)
 
 // Add swagger middleware to the sans-server instance
 api.use(SansServerSwagger({
-  controllers: path.resolve(__dirname, './controllers'),
+  controllers: path.resolve(__dirname, './src/controllers'),
   swagger: path.resolve(__dirname, './swagger.json'),
   development: false,
   ignoreBasePath: false,
