@@ -1,6 +1,6 @@
-version: 1
+doversion: 1
 
-name: domain-clssched-section_types
+name: domain-clssched-section-types
 
 pipelines:
   dev:

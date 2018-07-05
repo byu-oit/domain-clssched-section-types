@@ -16,19 +16,19 @@
  */
 const byuJwt = require('byu-jwt')
 const util = require('../util/util')
-//const params = require('../util/params')
+const params = require('../util/params')
 
 exports.authenticateJWTMiddleware = async function authenticateJWTMiddleware (req, res, next) {
-  //try {
-    //const awsParams = await params.getParams()
+  try {
+    const awsParams = await params.getParams()
     try {
-      req.verifiedJWTs = await byuJwt.authenticate(req.headers, process.env.WELLKNOWN) //TODO change to get wellknown from AWS
+      req.verifiedJWTs = await byuJwt.authenticate(req.headers, awsParams.wso2_well_known)
       next()
     } catch (err) { // Assume JWT Errors are 401
       return res.status(401).send(util.generateMetadataResponseObj(401, err.message))
     }
-  // } catch (err) { // If we can't get params, just send 401s for everyone
-  //   console.log(err)
-  //   return res.status(401).send(util.generateMetadataResponseObj(401))
-  // }
+  } catch (err) { // If we can't get params, just send 401s for everyone
+    console.log(err)
+    return res.status(401).send(util.generateMetadataResponseObj(401))
+  }
 }
