@@ -1,9 +1,15 @@
-version: 0.1
+version: 0.2
 phases:
-  pre_build:
+  install:
     commands:
-      - echo Installing requirements from package.json
-      - npm install
-artifacts:
-  files:
-    - ./**/*
+      - node --version
+      - npm --version
+  build:
+    commands:
+        - npm install
+        - ./node_modules/.bin/standard
+        - npm test
+        - npm prune --production
+  artifacts:
+    files:
+      - ./**/*

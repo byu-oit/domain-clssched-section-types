@@ -12,8 +12,8 @@ pipelines:
       branch: master
     - type: codebuild
       name: Build
-      build_image: aws/codebuild/nodejs:6.3.1
+      build_image: node:8
     - type: handel
-      name: Deploy
+      name: DevDeploy
       environments_to_deploy:
       - dev
