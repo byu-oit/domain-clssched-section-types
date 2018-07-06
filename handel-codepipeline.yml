@@ -8,7 +8,7 @@ pipelines:
     - type: github
       name: GitHub
       owner: byu-oit
-      repo: domain-clssched-section_types
+      repo: domain-clssched-section-types
       branch: master
     - type: codebuild
       name: Build

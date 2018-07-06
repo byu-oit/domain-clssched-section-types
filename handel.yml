@@ -1,13 +1,15 @@
 version: 1
 
 name: domain-clssched-section-types
-
+tags:
+  team: OIT Core Identity Management
+  data-sensitivity: confidential
 environments:
   dev:
     beanstalk:
       type: beanstalk
       path_to_code: .
-      solution_stack: 64bit Amazon Linux 2017.03 v4.1.0 running Node.js
+      solution_stack: 64bit Amazon Linux 2017.03 v4.5.1 running Node.js
       health_check_url: /xhealth
       dependencies:
       - bucket
