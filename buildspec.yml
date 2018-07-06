@@ -1,4 +1,5 @@
 version: 0.2
+
 phases:
   install:
     commands:
@@ -6,10 +7,10 @@ phases:
       - npm --version
   build:
     commands:
-        - npm install
-        - ./node_modules/.bin/standard
-        - npm test
-        - npm prune --production
-  artifacts:
-    files:
-      - ./**/*
+      - npm install
+      - ./node_modules/.bin/standard
+      - npm test
+      - npm prune --production
+artifacts:
+  files:
+    - ./**/*
