@@ -10,8 +10,13 @@ environments:
     router:
       type: beanstalk
       path_to_code: .
-      solution_stack: 64bit Amazon Linux 2017.03 v4.5.1 running Node.js
+      solution_stack: 64bit Amazon Linux 2018.03 v4.5.1 running Node.js
       health_check_url: /xhealth
+      auto_scaling:
+        min_instances: 1
+        max_instances: 1
+      routing:
+        type: https
       dependencies:
       - bucket
     bucket:
