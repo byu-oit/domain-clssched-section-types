@@ -8,7 +8,6 @@ phases:
   build:
     commands:
       - npm install
-      - ./node_modules/.bin/standard
       - npm test
       - npm prune --production
 artifacts:
