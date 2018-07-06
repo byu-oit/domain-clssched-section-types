@@ -1,8 +1,8 @@
 $schemaver: 1.1
-name: domain-clssched-section_types
+name: domain-clssched-section-types
 type: web service
 aliases:
-short_description: domain-clssched-section_types
+short_description: domain-clssched-section-types
 assignment_group: identity-codes-admin
 notes:
 maintained_by:
@@ -12,8 +12,8 @@ ddd:
   ubiquitous_language_url:
   context_map_url:
 links:
-  system_documentation_url: https://github.com/byu-oit/domain-clssched-section_types
-  source_repo_url: https://github.com/byu-oit/domain-clssched-section_types
+  system_documentation_url: https://github.com/byu-oit/domain-clssched-section-types
+  source_repo_url: https://github.com/byu-oit/domain-clssched-section-types
   swagger_urls:
 microservice: False
 technologies_used:
@@ -43,6 +43,6 @@ stages:
 tags:
   data-sensitivity: confidential
   env: prd
-  app: domain-clssched-section_types
+  app: domain-clssched-section-types
   team: identity-codes-admin
 federation_json_url: https://github.com/byu-oit/domain-clssched-section_types/master/.repo-meta.yml
