@@ -56,10 +56,10 @@ app.use(expressTranslator(api))
 /* Server Initial Setup */
 console.log('Beginning Section Types server')
 //getPool().then(() => { // Will also call getParams()
-  let port = process.env.PORT || 3000
-  app.listen(port, function () {
-    console.log('    [INFO] Server running on port: ' + port)
-    console.log('    [INFO] Controller path = ' + path.resolve(__dirname, './controllers'))
-    console.log('    [INFO] Swagger path = ' + path.resolve(__dirname, './swagger.json'))
-  })
+let port = process.env.PORT || 3000
+app.listen(port, function () {
+  console.log('    [INFO] Server running on port: ' + port)
+  console.log('    [INFO] Controller path = ' + path.resolve(__dirname, './controllers'))
+  console.log('    [INFO] Swagger path = ' + path.resolve(__dirname, './swagger.json'))
+})
 //})
