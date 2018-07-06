@@ -26,13 +26,6 @@ const {authenticateJWTMiddleware} = require('./src/auth/authentication')
 // const {generateMetadataResponseObj} = require('./src/util/util')
 // const { getPool } = require('./src/db/connection')
 
-//swagger tests
-SansServerSwagger.testSwaggerResponseExamples(path.resolve(__dirname, './swagger.json'))
-  .then(results => console.log(results))
-  .catch(function (error) {
-    console.log(error);
-  });
-
 // Express instance
 const app = express()
 app.use(bodyParser.json())
