@@ -8,8 +8,6 @@ phases:
   build:
     commands:
       - npm install
-      - npm test
-      - npm prune --production
 artifacts:
   files:
     - ./**/*
