@@ -17,6 +17,9 @@ environments:
         max_instances: 1
       routing:
         type: https
+        https_certificate: c4a82252-b609-4f7c-aae8-83777377a0fd
+        dns_names:
+        - clssched.sim-dev.byu.edu
       dependencies:
       - bucket
     bucket:
