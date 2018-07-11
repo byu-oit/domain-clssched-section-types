@@ -15,12 +15,32 @@
  *
  */
 'use strict';
+const winston = require('winston')
+const sectionTypesDb = require('../db/section-types')
+const format = require('../format')
+const { generateMetadataResponseObj } = require('../util/util')
 
-// ----- Exported Endpoint Handlers -----
-exports.getSectionTypes = function (req, res) {
-  console.log("Invoked getSectionTypes")
-  exports.getSectionTypes.mock(req, res);
-};
+exports.getSectionTypes = async function (req, res) {
+  const callerByuId = req.verifiedJWTs.prioritizedClaims.byuId
+  winston.info(`Invoked getSectionTypes\n\tCaller BYU ID: ${callerByuId}`)
+  try {
+    const sectionTypes = await sectionTypesDb.getSectionTypes()
+    if (sectionTypes) {
+      const formattedSectionTypes = format.formatSectionTypes(sectionTypes, req.swagger)
+      return res.status(200).send(formattedSectionTypes)
+    } else {
+      return res.status(404).send(generateMetadataResponseObj(404))
+    }
+  } catch (err) {
+    winston.error(`Error during getSectionTypes:\n${err}`)
+    return res.status(500).send(generateMetadataResponseObj(500, err.message))
+  }
+}
+
+// exports.getSectionTypes = function (req, res) {
+//   console.log("Invoked getSectionTypes")
+//   exports.getSectionTypes.mock(req, res);
+// };
 
 exports.getSectionTypes.mock = function (req, res) {
   console.log("Invoked getSectionTypes.mock")
