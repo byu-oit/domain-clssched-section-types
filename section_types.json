@@ -1,0 +1,146 @@
+[
+  {
+    "section_type": "CALIFORNIA",
+    "description": "California Center",
+    "long_description": "California Center",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "CONF WKSHP",
+    "description": "Conferences and Workshops",
+    "long_description": "Conferences and Workshops",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "DAY",
+    "description": "Day Classes",
+    "long_description": "Day Classes",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "DIS",
+    "description": "Degrees by Independent Study",
+    "long_description": "Degrees by Independent Study",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "EMBA",
+    "description": "Executive MBA",
+    "long_description": "Executive MBA",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "EVENING",
+    "description": "Evening Classes",
+    "long_description": "Evening Classes",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "IDAHO",
+    "description": "Idaho Center",
+    "long_description": "Idaho Center",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "IDP",
+    "description": "Intern Doctoral Program",
+    "long_description": "Intern Doctoral Program",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "IND STUDY",
+    "description": "Independent Study",
+    "long_description": "Independent Study",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "JERUSALEM",
+    "description": "Jerusalem Center",
+    "long_description": "Jerusalem Center",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "MISC",
+    "description": "Miscellaneous",
+    "long_description": "Miscellaneous",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "MISC-CE",
+    "description": "Misc Con Ed",
+    "long_description": "Misc Con Ed",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "NAUVOO",
+    "description": "Nauvoo Center",
+    "long_description": "Nauvoo Center",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "OGDEN",
+    "description": "Ogden Center",
+    "long_description": "Ogden Center",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "ONLINE",
+    "description": "Semester On-Line",
+    "long_description": "Semester On-Line",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "SALT LAKE",
+    "description": "Salt Lake Center",
+    "long_description": "Salt Lake Center",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "ST ABROAD",
+    "description": "Study Abroad",
+    "long_description": "Study Abroad",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  },
+  {
+    "section_type": "TRAVEL ST",
+    "description": "Travel Study",
+    "long_description": "Travel Study",
+    "active_status": "Y",
+    "updated_by_id": "INIT",
+    "date_time_updated": "2005-11-01T00:00:00.000Z"
+  }
+]
