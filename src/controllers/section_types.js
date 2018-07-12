@@ -25,9 +25,8 @@ exports.getSectionTypes = async function (req, res) {
   winston.info(`Invoked getSectionTypes\n\tCaller BYU ID: ${callerByuId}`)
   try {
     const sectionTypes = await sectionTypesDb.getSectionTypes()
-    if (sectionTypes) {
+    if (sectionTypes.rows.length) {
       const formattedSectionTypes = format.formatSectionTypes(sectionTypes.rows, req.swagger)
-      console.log(JSON.stringify(formattedSectionTypes))
       return res.status(200).send(formattedSectionTypes)
     } else {
       return res.status(404).send(generateMetadataResponseObj(404))
@@ -38,20 +37,28 @@ exports.getSectionTypes = async function (req, res) {
   }
 }
 
-// exports.getSectionTypes = function (req, res) {
-//   console.log("Invoked getSectionTypes")
-//   exports.getSectionTypes.mock(req, res);
-// };
+exports.createSectionTypes = function (req, res) {
+  console.log("Invoked createSectionType")
+  exports.createSectionTypes.mock(req, res);
+};
 
 exports.getSectionTypes.mock = function (req, res) {
   console.log("Invoked getSectionTypes.mock")
   res.send(req.swagger.root['x-mock_json'].section_types);
 };
 
-exports.createSectionType = function (req, res) {
-  console.log("Invoked createSectionType");
-  exports.createSectionType.mock(req, res);
-};
+// exports.createSectionType = function (req, res) {
+//   const callerByuId = req.verifiedJWTs.prioritizedClaims.byuId
+//   winston.info(`Invoked createSectionType\n\tCaller BYU ID: ${callerByuId}`)
+//   try {
+//     const createdSectionType = sectionTypesDb.
+//
+//   } catch (err) {
+//     winston.error(`Error during createSectionType:\n${err}`)
+//     return res.status(500).send(generateMetadataResponseObj(500, err.message))
+//   }
+//
+// };
 
 exports.createSectionType.mock = function (req, res) {
   console.log("Invoked createSectionType.mock");

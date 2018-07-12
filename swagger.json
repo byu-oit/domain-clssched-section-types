@@ -24,15 +24,6 @@
         "summary": "clssched Codes",
         "description": "Retrieve a collection of section_types",
         "operationId": "getSectionTypes",
-        "parameters": [
-          {
-            "name": "active_status",
-            "in": "query",
-            "description": "query by active_status",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "tags": [
           "Section Types"
         ],

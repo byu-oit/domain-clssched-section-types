@@ -1,4 +1,7 @@
 const Enforcer = require('swagger-enforcer')
+
+//TODO add auth check for links (ie only show POST if user is authorized to post)
+
 exports.formatSectionTypes = function (sections, swagger) {
   return Enforcer.applyTemplate(swagger.root.definitions.section_types, null, Object.assign(sections, {
     collection_size: sections.length,

@@ -15,16 +15,28 @@
  *
  */
 'use strict';
+const winston = require('winston')
+const sectionTypesDb = require('../db/section-types')
+const format = require('../format')
+const { generateMetadataResponseObj } = require('../util/util')
 
 // ----- Exported Endpoint Handlers -----
-exports.getSectionType = function (req, res) {
-  console.log("Invoked getSectionType")
-  exports.getSectionType.mock(req, res);
-};
+exports.getSectionType = async function (req, res) {
+  const callerByuId = req.verifiedJWTs.prioritizedClaims.byuId
+  winston.info(`Invoked getSectionType\n\tCaller BYU ID: ${callerByuId}`)
+  try {
 
-exports.getSectionType.mock = function (req, res) {
-  console.log("Invoked getSectionType.mock")
-  res.send(req.swagger.root['x-mock_json'].section_types.values[0]);
+    const sectionType = await sectionTypesDb.getSectionType(decodeURI(req.params["section_type"]))
+    if (sectionType.rows.length) {
+      const formattedSectionType = format.formatSectionType(sectionType.rows[0], req.swagger)
+      return res.status(200).send(formattedSectionType)
+    } else {
+      return res.status(404).send(generateMetadataResponseObj(404))
+    }
+  } catch (err) {
+    winston.error(`Error during getSectionType:\n${err}`)
+    return res.status(500).send(generateMetadataResponseObj(500, err.message))
+  }
 };
 
 exports.modifySectionType = function (req, res) {

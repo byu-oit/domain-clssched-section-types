@@ -40,7 +40,7 @@ const api = SansServer()
 
 // Authenticate calls to API
 api.use(authenticateJWTMiddleware)
-//api.use(authorizeUserMiddleware)
+//api.use(authorizeUserMiddleware) TODO add this back in to authorize POSTs/PUTs/DELETEs
 
 // Add swagger middleware to the sans-server instance
 api.use(SansServerSwagger({
