@@ -23,8 +23,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const {authenticateJWTMiddleware} = require('./src/auth/authentication')
 // const {authorizeUserMiddleware} = require('./src/auth/authorization')
-// const {generateMetadataResponseObj} = require('./src/util/util')
-// const { getPool } = require('./src/db/connection')
+const {generateMetadataResponseObj} = require('./src/util/util')
+const { getPool } = require('./src/db/connection')
 
 // Express instance
 const app = express()
@@ -48,18 +48,18 @@ api.use(SansServerSwagger({
   swagger: path.resolve(__dirname, './swagger.json'),
   development: false,
   ignoreBasePath: false,
-  //exception: (res, state) => res.body(generateMetadataResponseObj(state.statusCode, state.body))
+  exception: (res, state) => res.body(generateMetadataResponseObj(state.statusCode, state.body))
 }))
 
 app.use(expressTranslator(api))
 
 /* Server Initial Setup */
 console.log('Beginning Section Types server')
-//getPool().then(() => { // Will also call getParams()
-let port = process.env.PORT || 3000
-app.listen(port, function () {
-  console.log('    [INFO] Server running on port: ' + port)
-  console.log('    [INFO] Controller path = ' + path.resolve(__dirname, './controllers'))
-  console.log('    [INFO] Swagger path = ' + path.resolve(__dirname, './swagger.json'))
+getPool().then(() => { // Will also call getParams()
+  let port = process.env.PORT || 3000
+  app.listen(port, function () {
+    console.log('    [INFO] Server running on port: ' + port)
+    console.log('    [INFO] Controller path = ' + path.resolve(__dirname, './controllers'))
+    console.log('    [INFO] Swagger path = ' + path.resolve(__dirname, './swagger.json'))
+  })
 })
-//})

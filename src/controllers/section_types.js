@@ -26,7 +26,8 @@ exports.getSectionTypes = async function (req, res) {
   try {
     const sectionTypes = await sectionTypesDb.getSectionTypes()
     if (sectionTypes) {
-      const formattedSectionTypes = format.formatSectionTypes(sectionTypes, req.swagger)
+      const formattedSectionTypes = format.formatSectionTypes(sectionTypes.rows, req.swagger)
+      console.log(JSON.stringify(formattedSectionTypes))
       return res.status(200).send(formattedSectionTypes)
     } else {
       return res.status(404).send(generateMetadataResponseObj(404))

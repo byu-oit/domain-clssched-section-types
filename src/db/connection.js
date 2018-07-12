@@ -11,7 +11,7 @@ exports.getPool = async function getPool () {
   pool = await client.createPool({
     user: params.db_username,
     password: params.db_password,
-    connectionString: params.connection_string
+    connectionString: params.db_connection_string
   })
   return pool
 }
@@ -41,5 +41,13 @@ async function getConn (usePool = true) {
 
 exports.executeQuery = async function (sql, params, usePool) {
   const conn = await getConn(usePool)
+  try {
+    const results = await conn.execute(sql, params)
+    await conn.close()
+    return results
+  } catch (err) {
+    await conn.close()
+    throw err
+  }
 
 }

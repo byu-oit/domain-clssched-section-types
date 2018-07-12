@@ -34,9 +34,9 @@ exports.getParams = function () {
       .then(data => {
         params = data
           if (process.env.WELL_KNOWN) params.wso2_well_known = process.env.WELL_KNOWN
-        //if (process.env.DB_CONNECTION_STRING) params.db_connection_string = process.env.DB_CONNECTION_STRING
-        //if (process.env.DB_USERNAME) params.db_username = process.env.DB_USERNAME
-        //if (process.env.DB_PASSWORD) params.db_password = process.env.DB_PASSWORD
+          if (process.env.DB_CONNECTION_STRING) params.db_connection_string = process.env.DB_CONNECTION_STRING
+          if (process.env.DB_USERNAME) params.db_username = process.env.DB_USERNAME
+          if (process.env.DB_PASSWORD) params.db_password = process.env.DB_PASSWORD
 
         return params
       })

@@ -2,7 +2,7 @@ version: 1
 
 name: domain-clssched-section-types
 tags:
-  team: OIT Core Identity Management
+  team: AD-Academic Information Management
   data-sensitivity: confidential
 
 environments:

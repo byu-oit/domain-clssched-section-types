@@ -343,7 +343,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/section_type_data"
-          }
+          },
+          "x-variable": "values"
         }
       },
       "example": {
@@ -547,10 +548,14 @@
           "properties": {
             "code": {
               "type": "integer",
+              "default": 200,
+              "x-variable": "code",
               "example": "#/x-mock_json/section_types/values/0/metadata/validation_response/code"
             },
             "message": {
               "type": "string",
+              "default": "Successful",
+              "x-variable": "message",
               "example": "#/x-mock_json/section_types/values/0/metadata/validation_response/message"
             }
           },
@@ -611,15 +616,20 @@
       "type": "string",
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0/section_type"
-      }
+      },
+      "x-variable": "section_type"
     },
     "active_status": {
       "description": "Is the code currently active or only used for archive purposes?",
       "type": "string",
-      "pattern": "^(?:Y|N)$",
+      "enum": [
+        "Y",
+        "N"
+      ],
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0/active_status"
-      }
+      },
+      "x-variable": "active_status"
     },
     "date_time_updated": {
       "description": "When was the section_type's data last updated?",
@@ -627,28 +637,32 @@
       "format": "date-time",
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0/date_time_updated"
-      }
+      },
+      "x-variable": "date_time_updated"
     },
     "description": {
       "description": "section_type short description",
       "type": "string",
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0/description"
-      }
+      },
+      "x-variable": "description"
     },
     "long_description": {
       "description": "section_type long description",
       "type": "string",
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0/long_description"
-      }
+      },
+      "x-variable": "long_description"
     },
     "updated_by_id": {
       "description": "Who last updated the section_type's data?",
       "type": "string",
       "example": {
         "$ref": "#/x-mock_json/section_types/values/0/updated_by_id"
-      }
+      },
+      "x-variable": "updated_by_id"
     }
   },
   "parameters": {
